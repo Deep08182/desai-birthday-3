@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>A Little Corner of the Internet ✨</title>
+    <meta name="description" content="A special friendship surprise across Pune & Dehradun. Distance has nothing on good memories.">
+    <meta name="theme-color" content="#FAF7F2">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Favicon & Social Preview -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌻</text></svg>">
+    <meta property="og:title" content="A Little Corner of the Internet ✨">
+    <meta property="og:description" content="A special friendship surprise across Pune & Dehradun.">
+    <meta property="og:image" content="./images/photo1.jpg">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body class="theme-default">
+    <!-- Ambient Canvas for Floating Sparkles / Particles -->
+    <canvas id="ambient-canvas"></canvas>
+
+    <!-- Desktop Cursor Follower Glow -->
+    <div id="cursor-glow" aria-hidden="true"></div>
+
+    <!-- Floating Audio Control -->
+    <div class="audio-control-container">
+        <button id="audio-toggle-btn" class="audio-btn" aria-label="Toggle background music" title="Play soothing background melody">
+            <span class="audio-icon" id="audio-icon">🎵</span>
+            <div class="equalizer" id="equalizer" aria-hidden="true">
+                <span class="bar bar-1"></span>
+                <span class="bar bar-2"></span>
+                <span class="bar bar-3"></span>
+            </div>
+            <span class="audio-label">Music</span>
+        </button>
+    </div>
+
+    <!-- Screen Transition Ripple Overlay -->
+    <div id="transition-ripple" class="transition-ripple" aria-hidden="true"></div>
+
+    <!-- Main Container -->
+    <main id="main-content">
+
+        <!-- ===================================================================
+             INTRO / LANDING SCREEN (FULLSCREEN CINEMATIC)
+             =================================================================== -->
+        <section id="intro-screen" class="intro-section full-screen">
+            <div class="intro-clouds" aria-hidden="true"></div>
+            <div class="intro-content">
+                <div class="intro-badge">
+                    <span class="badge-dot"></span> Pune &bull; Dehradun
+                </div>
+
+                <div class="intro-text-wrapper">
+                    <h1 id="intro-line-1" class="intro-heading active">Hey, you 👀</h1>
+                    <h2 id="intro-line-2" class="intro-subheading">I made something for you…</h2>
+                    <p id="intro-line-3" class="intro-tagline">Because distance shouldn't stop good people from having good moments. 🌻</p>
+                </div>
+
+                <button id="open-surprise-btn" class="magnetic-btn surprise-btn" aria-label="Open your little surprise">
+                    <span class="btn-text">Open your little surprise ✨</span>
+                    <span class="btn-glow"></span>
+                </button>
+            </div>
+            <div class="scroll-cue" id="intro-scroll-cue">
+                <span class="mouse-icon"></span>
+                <span>or scroll gently</span>
+            </div>
+        </section>
+
+        <!-- ===================================================================
+             SECTION 1 — DISTANCE (PUNE ↔ DEHRADUN)
+             =================================================================== -->
+        <section id="section-distance" class="experience-section distance-section">
+            <div class="section-container">
+                <div class="section-header center">
+                    <span class="sub-label">A Tale of Two Cities</span>
+                    <h2 class="section-title">Miles apart, but here we are</h2>
+                </div>
+
+                <div class="distance-map-card">
+                    <div class="city-node city-pune">
+                        <div class="city-icon-wrapper">
+                            <span class="city-emoji">🌸</span>
+                            <div class="pulse-ring"></div>
+                        </div>
+                        <h3 class="city-name">Pune</h3>
+                        <span class="city-tag">Maharashtra</span>
+                    </div>
+
+                    <!-- Flight Route SVG with Animated Plane -->
+                    <div class="route-svg-wrapper">
+                        <svg class="route-svg" viewBox="0 0 700 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <linearGradient id="routeGradient" x1="0%" y1="100%" x2="100%" y2="0%">
+                                    <stop offset="0%" stop-color="#FFB7A1" stop-opacity="0.8"/>
+                                    <stop offset="50%" stop-color="#FEE488" stop-opacity="0.9"/>
+                                    <stop offset="100%" stop-color="#90DBB0" stop-opacity="0.8"/>
+                                </linearGradient>
+                                <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+                                    <feGaussianBlur stdDeviation="3" result="blur" />
+                                    <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                                </filter>
+                            </defs>
+                            <!-- Underlying Track -->
+                            <path class="route-track" d="M 60,180 C 240,20 460,220 640,60" />
+                            <!-- Animated Dotted Dash -->
+                            <path id="flight-path" class="route-dash" d="M 60,180 C 240,20 460,220 640,60" />
+                        </svg>
+                        <!-- Paper Airplane traveling the path -->
+                        <div id="paper-plane" class="paper-plane" aria-hidden="true">
+                            <span>✈️</span>
+                            <div class="plane-trail"></div>
+                        </div>
+                    </div>
+
+                    <div class="city-node city-dehradun">
+                        <div class="city-icon-wrapper">
+                            <span class="city-emoji">🌲</span>
+                            <div class="pulse-ring"></div>
+                        </div>
+                        <h3 class="city-name">Dehradun</h3>
+                        <span class="city-tag">Uttarakhand</span>
+                    </div>
+                </div>
+
+                <div class="distance-quote-box">
+                    <p class="distance-quote">
+                        “Different cities.<br>
+                        Different schedules.<br>
+                        Still somehow, we ended up talking.”
+                    </p>
+                    <div class="distance-stat">
+                        <span class="stat-num">~1,400</span>
+                        <span class="stat-unit">kilometers of distance</span>
+                        <span class="stat-sep">&bull;</span>
+                        <span class="stat-highlight">Zero reasons not to stay in touch ✨</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================================================================
+             SECTION 2 — PHOTO MEMORY SLIDESHOW
+             =================================================================== -->
+        <section id="section-slideshow" class="experience-section slideshow-section">
+            <div class="section-container">
+                <div class="section-header center">
+                    <span class="sub-label">Moments Frozen in Time</span>
+                    <h2 class="section-title">The Highlight Reel</h2>
+                    <p class="section-desc">A slow cinematic flip through some favourite frames.</p>
+                </div>
+
+                <div class="slideshow-frame-wrapper" id="slideshow-container">
+                    <div class="slideshow-viewport">
+                        <div class="slides-track" id="slides-track">
+                            <!-- Slides dynamically injected by script.js -->
+                        </div>
+                    </div>
+
+                    <!-- Slide Controls -->
+                    <button class="slide-nav-btn prev-btn" id="slide-prev-btn" aria-label="Previous photo">‹</button>
+                    <button class="slide-nav-btn next-btn" id="slide-next-btn" aria-label="Next photo">›</button>
+
+                    <!-- Bottom Caption & Progress -->
+                    <div class="slide-caption-bar">
+                        <p class="active-slide-caption" id="active-slide-caption">“this one deserves a moment.”</p>
+                        <div class="slide-progress-dots" id="slide-progress-dots">
+                            <!-- Dots injected dynamically -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================================================================
+             SECTION 3 — THE MEMORY WALL (POLAROID COLLAGE)
+             =================================================================== -->
+        <section id="section-wall" class="experience-section wall-section">
+            <div class="section-container wide">
+                <div class="section-header center">
+                    <span class="sub-label">Aesthetic Scrapbook</span>
+                    <h2 class="section-title">The Memory Wall</h2>
+                    <p class="section-desc">Little polaroid snippets, messy memories, and captured moments.</p>
+                    <div class="scrapbook-stickers" aria-hidden="true">
+                        <span>🌻</span>
+                        <span>✨</span>
+                        <span>💌</span>
+                        <span>♡</span>
+                        <span>☁️</span>
+                    </div>
+                </div>
+
+                <!-- Masonry / Collage Grid -->
+                <div class="polaroid-grid" id="polaroid-grid">
+                    <!-- Polaroids dynamically generated from photos -->
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================================================================
+             SECTION 4 — “THINGS THAT MAKE YOU… YOU”
+             =================================================================== -->
+        <section id="section-things" class="experience-section things-section">
+            <div class="section-container">
+                <div class="section-header center">
+                    <span class="sub-label">Little Observations</span>
+                    <h2 class="section-title">Things that make you… you.</h2>
+                    <p class="section-desc">Tap each card to reveal the little truth inside.</p>
+                </div>
+
+                <div class="cards-grid">
+                    <div class="reveal-card" data-card="1">
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <span class="card-emoji">⚡</span>
+                                <h3 class="card-title">Your energy</h3>
+                                <span class="card-prompt">tap to see 👀</span>
+                            </div>
+                            <div class="card-back">
+                                <span class="card-emoji-sm">⚡</span>
+                                <p class="card-answer">“Somehow chaotic but still comforting.”</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="reveal-card" data-card="2">
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <span class="card-emoji">😊</span>
+                                <h3 class="card-title">Your smile</h3>
+                                <span class="card-prompt">tap to see 👀</span>
+                            </div>
+                            <div class="card-back">
+                                <span class="card-emoji-sm">✨</span>
+                                <p class="card-answer">“Yeah… that one.”</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="reveal-card" data-card="3">
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <span class="card-emoji">💬</span>
+                                <h3 class="card-title">Your random conversations</h3>
+                                <span class="card-prompt">tap to see 👀</span>
+                            </div>
+                            <div class="card-back">
+                                <span class="card-emoji-sm">☁️</span>
+                                <p class="card-answer">“Never know where they’re going, but somehow they’re fun.”</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="reveal-card" data-card="4">
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <span class="card-emoji">✨</span>
+                                <h3 class="card-title">Your existence</h3>
+                                <span class="card-prompt">tap to see 👀</span>
+                            </div>
+                            <div class="card-back">
+                                <span class="card-emoji-sm">🌻</span>
+                                <p class="card-answer">“Honestly, I'm glad our paths crossed.”</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================================================================
+             SECTION 5 — INTERACTIVE HEART EFFECT
+             =================================================================== -->
+        <section id="section-heart" class="experience-section heart-section">
+            <div class="section-container center">
+                <div class="heart-box">
+                    <span class="sub-label">A Small Burst of Warmth</span>
+                    <h2 class="heart-box-title">Okay, now press this.</h2>
+                    <p class="heart-box-subtitle">Don't think too much, just tap it.</p>
+
+                    <div class="heart-btn-wrapper">
+                        <button id="magic-heart-btn" class="magic-heart-btn" aria-label="Send a heart">
+                            <span class="heart-symbol">❤️</span>
+                            <span class="heart-pulse-glow"></span>
+                        </button>
+                    </div>
+
+                    <div id="heart-message" class="heart-message">
+                        “See? A little happiness can travel pretty far. ❤️”
+                    </div>
+                    <div class="click-counter-label" id="heart-click-counter">Taps: <span id="tap-count">0</span></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================================================================
+             SECTION 6 — SUNFLOWER MOMENT 🌻 (WITH 5-CLICK SECRET)
+             =================================================================== -->
+        <section id="section-sunflower" class="experience-section sunflower-section">
+            <div class="section-container center">
+                <div class="sunflower-box">
+                    <p class="sunflower-prelude" id="sunflower-prelude">Wait… one more thing.</p>
+
+                    <!-- SVG Sunflower Blooming Stage -->
+                    <div class="sunflower-stage" id="sunflower-interactive" title="Click me for a secret!">
+                        <svg class="sunflower-svg" viewBox="0 0 300 420" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Soil Ground -->
+                            <ellipse cx="150" cy="385" rx="65" ry="12" fill="#8D6E63" class="sunflower-soil" />
+                            <!-- Tiny Seed (initially visible) -->
+                            <path class="sunflower-seed" id="sunflower-seed" d="M148 375 Q150 365 152 375 Q150 380 148 375" fill="#4E342E" />
+
+                            <!-- Stem -->
+                            <path class="sunflower-stem" id="sunflower-stem" d="M 150,380 C 145,290 158,220 150,140" stroke="#4CAF50" stroke-width="7" stroke-linecap="round" fill="none" />
+
+                            <!-- Leaves -->
+                            <g class="sunflower-leaves" id="sunflower-leaves">
+                                <path class="leaf leaf-left" d="M 148,270 C 110,260 90,290 115,310 C 135,320 148,290 148,270 Z" fill="#66BB6A" />
+                                <path class="leaf leaf-right" d="M 152,230 C 190,210 215,240 190,265 C 170,275 152,250 152,230 Z" fill="#4CAF50" />
+                            </g>
+
+                            <!-- Flower Head (Center and Petals) -->
+                            <g class="sunflower-head" id="sunflower-head">
+                                <!-- Petals -->
+                                <g class="sunflower-petals" id="sunflower-petals">
+                                    <!-- 16 layered golden petals -->
+                                    <ellipse cx="150" cy="90" rx="14" ry="42" fill="#FFC107" transform="rotate(0 150 140)" />
+                                    <ellipse cx="150" cy="90" rx="13" ry="40" fill="#FFD54F" transform="rotate(22.5 150 140)" />
+                                    <ellipse cx="150" cy="90" rx="14" ry="42" fill="#FFB300" transform="rotate(45 150 140)" />
+                                    <ellipse cx="150" cy="90" rx="13" ry="40" fill="#FFC107" transform="rotate(67.5 150 140)" />
+                                    <ellipse cx="150" cy="90" rx="14" ry="42" fill="#FFD54F" transform="rotate(90 150 140)" />
+                                    <ellipse cx="150" cy="90" rx="13" ry="40" fill="#FFB300" transform="rotate(112.5 150 140)" />
+                                    <ellipse cx="150" cy="90" rx="14" ry="42" fill="#FFC107" transform="rotate(135 150 140)" />
+                                    <ellipse cx="150" cy="90" rx="13" ry="40" fill="#FFD54F" transform="rotate(157.5 150 140)" />
+                                    <ellipse cx="150" cy="90" rx="14" ry="42" fill="#FFB300" transform="rotate(180 150 140)" />
+                                    <ellipse cx="150" cy="90" rx="13" ry="40" fill="#FFC107" transform="rotate(202.5 150 140)" />
+                                    <ellipse cx="150" cy="90" rx="14" ry="42" fill="#FFD54F" transform="rotate(225 150 140)" />
+                                    <ellipse cx="150" cy="90" rx="13" ry="40" fill="#FFB300" transform="rotate(247.5 150 140)" />
+                                    <ellipse cx="150" cy="90" rx="14" ry="42" fill="#FFC107" transform="rotate(270 150 140)" />
+                                    <ellipse cx="150" cy="90" rx="13" ry="40" fill="#FFD54F" transform="rotate(292.5 150 140)" />
+                                    <ellipse cx="150" cy="90" rx="14" ry="42" fill="#FFB300" transform="rotate(315 150 140)" />
+                                    <ellipse cx="150" cy="90" rx="13" ry="40" fill="#FFC107" transform="rotate(337.5 150 140)" />
+                                </g>
+
+                                <!-- Flower Center -->
+                                <circle cx="150" cy="140" r="28" fill="#5D4037" />
+                                <circle cx="150" cy="140" r="23" fill="#3E2723" />
+                                <circle cx="150" cy="140" r="18" fill="#4E342E" stroke="#FFB300" stroke-dasharray="3 3" stroke-width="1.5" />
+                                <circle cx="150" cy="140" r="8" fill="#3E2723" />
+                            </g>
+                        </svg>
+
+                        <!-- Glowing halo particles around bloom -->
+                        <div class="sunflower-glow-halo" id="sunflower-halo"></div>
+                    </div>
+
+                    <div class="sunflower-text" id="sunflower-text">
+                        <h3 class="sunflower-title">🌻 A little sunflower for you.</h3>
+                        <p class="sunflower-desc">Because some people just deserve a little extra sunshine.</p>
+                        <span class="sunflower-hint">(tap the sunflower gently… maybe something happens)</span>
+                    </div>
+
+                    <!-- Secret Easter Egg Modal / Banner -->
+                    <div id="secret-sunflower-modal" class="secret-modal" aria-hidden="true">
+                        <div class="secret-modal-content">
+                            <span class="secret-emoji">🌻✨🌻</span>
+                            <h4>Okay okay 😂 You found the secret.</h4>
+                            <p>Here's another little sunflower because apparently one wasn't enough. 🌻🌻🌻</p>
+                            <button id="close-secret-btn" class="close-secret-btn">Haha got it 💛</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================================================================
+             SECTION 7 — “IF WE WERE IN THE SAME PLACE…”
+             =================================================================== -->
+        <section id="section-same-place" class="experience-section same-place-section">
+            <div class="section-container wide">
+                <div class="section-header center">
+                    <span class="sub-label">Alternate Universe Things</span>
+                    <h2 class="section-title">If distance wasn't a thing…</h2>
+                    <p class="section-desc">Swipe or scroll across to see the chaotic agenda.</p>
+                </div>
+
+                <div class="horizontal-scroll-container">
+                    <div class="horizontal-cards-track" id="horizontal-track">
+                        <div class="wish-card">
+                            <span class="wish-icon">☕</span>
+                            <h3 class="wish-title">Coffee somewhere random</h3>
+                            <p class="wish-note">Ordering weird drinks we've never heard of and immediately judging each other.</p>
+                        </div>
+
+                        <div class="wish-card">
+                            <span class="wish-icon">🍕</span>
+                            <h3 class="wish-title">Arguing over what to eat</h3>
+                            <p class="wish-note">Spending 45 minutes saying “I don't mind, whatever you want” back and forth.</p>
+                        </div>
+
+                        <div class="wish-card">
+                            <span class="wish-icon">📸</span>
+                            <h3 class="wish-title">Taking unnecessarily many pictures</h3>
+                            <p class="wish-note">Taking 70 identical photos until exactly one gets approved for the archives.</p>
+                        </div>
+
+                        <div class="wish-card">
+                            <span class="wish-icon">🌆</span>
+                            <h3 class="wish-title">Going on a random evening walk</h3>
+                            <p class="wish-note">Walking without Google Maps until neither of us knows where we are.</p>
+                        </div>
+
+                        <div class="wish-card">
+                            <span class="wish-icon">🎧</span>
+                            <h3 class="wish-title">Sharing music</h3>
+                            <p class="wish-note">Handing over one earbud and silently waiting for the beat drop reaction.</p>
+                        </div>
+
+                        <div class="wish-card">
+                            <span class="wish-icon">😂</span>
+                            <h3 class="wish-title">Laughing at something that isn't even funny</h3>
+                            <p class="wish-note">The kind of wheezing laughter where neither of us can even breathe.</p>
+                        </div>
+
+                        <div class="wish-card">
+                            <span class="wish-icon">🌻</span>
+                            <h3 class="wish-title">Finding somewhere pretty</h3>
+                            <p class="wish-note">Sitting on a bench, doing absolutely nothing, and calling it quality time.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================================================================
+             SECTION 8 — LONG DISTANCE TIMELINE
+             =================================================================== -->
+        <section id="section-timeline" class="experience-section timeline-section">
+            <div class="section-container">
+                <div class="section-header center">
+                    <span class="sub-label">The Story Arc</span>
+                    <h2 class="section-title">The Unfolding Timeline</h2>
+                    <p class="section-desc">From stranger alerts to comfortable silences.</p>
+                </div>
+
+                <div class="timeline-tree">
+                    <div class="timeline-stem-line" id="timeline-line"></div>
+
+                    <!-- Milestone 1 -->
+                    <div class="timeline-item" data-milestone="1">
+                        <div class="timeline-dot"><span>01</span></div>
+                        <div class="timeline-content">
+                            <span class="timeline-date">The Beginning</span>
+                            <h3 class="timeline-heading">First conversation</h3>
+                            <p class="timeline-text">Polite texts, carefully chosen emojis, and zero clues that we’d talk this much.</p>
+                        </div>
+                    </div>
+
+                    <!-- Milestone 2 -->
+                    <div class="timeline-item" data-milestone="2">
+                        <div class="timeline-dot"><span>02</span></div>
+                        <div class="timeline-content">
+                            <span class="timeline-date">Phase Two</span>
+                            <h3 class="timeline-heading">Random conversations</h3>
+                            <p class="timeline-text">From daily food updates to sending memes that require four layers of context.</p>
+                        </div>
+                    </div>
+
+                    <!-- Milestone 3 -->
+                    <div class="timeline-item" data-milestone="3">
+                        <div class="timeline-dot"><span>03</span></div>
+                        <div class="timeline-content">
+                            <span class="timeline-date">Phase Three</span>
+                            <h3 class="timeline-heading">Inside jokes</h3>
+                            <p class="timeline-text">Phrases that make absolute sense to nobody else on this planet.</p>
+                        </div>
+                    </div>
+
+                    <!-- Milestone 4 -->
+                    <div class="timeline-item" data-milestone="4">
+                        <div class="timeline-dot"><span>04</span></div>
+                        <div class="timeline-content">
+                            <span class="timeline-date">Phase Four</span>
+                            <h3 class="timeline-heading">Late-night talks</h3>
+                            <p class="timeline-text">“Okay I'm sleeping in 5 mins” (proceeds to talk for two more hours).</p>
+                        </div>
+                    </div>
+
+                    <!-- Milestone 5 -->
+                    <div class="timeline-item" data-milestone="5">
+                        <div class="timeline-dot"><span>05</span></div>
+                        <div class="timeline-content">
+                            <span class="timeline-date">Present Day</span>
+                            <h3 class="timeline-heading">More memories</h3>
+                            <p class="timeline-text">A whole archive of photos, laughs, and genuine moments across state lines.</p>
+                        </div>
+                    </div>
+
+                    <!-- Milestone 6 -->
+                    <div class="timeline-item" data-milestone="6">
+                        <div class="timeline-dot"><span>06</span></div>
+                        <div class="timeline-content">
+                            <span class="timeline-date">The Horizon</span>
+                            <h3 class="timeline-heading">Whatever happens next…</h3>
+                            <p class="timeline-text">No pressure, no rush. Just good days and good vibes ahead. 🥂</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================================================================
+             SECTION 9 — MINI INTERACTIVE GAME (“CHOOSE YOUR VIBE”)
+             =================================================================== -->
+        <section id="section-game" class="experience-section game-section">
+            <div class="section-container center">
+                <div class="game-box">
+                    <span class="sub-label">Mini Vibe Check</span>
+                    <h2 class="section-title">Choose your vibe 🌷</h2>
+                    <p class="section-desc">Pick what matches you best right this second:</p>
+
+                    <div class="vibe-buttons-group">
+                        <button class="vibe-btn" data-vibe="cozy">
+                            <span class="vibe-emoji">☕</span>
+                            <span class="vibe-name">Cozy</span>
+                        </button>
+                        <button class="vibe-btn" data-vibe="happy">
+                            <span class="vibe-emoji">🌻</span>
+                            <span class="vibe-name">Happy</span>
+                        </button>
+                        <button class="vibe-btn" data-vibe="latenight">
+                            <span class="vibe-emoji">🌙</span>
+                            <span class="vibe-name">Late-night</span>
+                        </button>
+                        <button class="vibe-btn" data-vibe="chaotic">
+                            <span class="vibe-emoji">✨</span>
+                            <span class="vibe-name">Chaotic</span>
+                        </button>
+                    </div>
+
+                    <div class="vibe-response-card" id="vibe-response-card">
+                        <div class="vibe-icon-display" id="vibe-icon-display">✨</div>
+                        <p class="vibe-message" id="vibe-message">Click one of the vibes above to see your customized diagnosis 👀</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================================================================
+             SECTION 10 — PHOTO REVEAL (CINEMATIC UNBLUR)
+             =================================================================== -->
+        <section id="section-reveal" class="experience-section reveal-section">
+            <div class="section-container center">
+                <div class="reveal-box">
+                    <span class="sub-label">A Special Snapshot</span>
+                    <h2 class="reveal-title">There's something I wanted you to see…</h2>
+                    <p class="reveal-subtitle">One photo picked out just for this moment.</p>
+
+                    <div class="mystery-photo-frame" id="mystery-photo-frame">
+                        <img id="reveal-image" src="./images/photo4.jpg" alt="A special memory" class="mystery-img blurred" onerror="console.error('Failed to load reveal image:', this.src)">
+                        <div class="blur-overlay" id="blur-overlay">
+                            <span class="lock-icon">🔒</span>
+                            <span>Currently Hidden</span>
+                        </div>
+                    </div>
+
+                    <div class="reveal-actions">
+                        <button id="trigger-reveal-btn" class="reveal-btn">
+                            <span class="reveal-btn-text">Reveal it 👀</span>
+                            <span class="reveal-btn-glow"></span>
+                        </button>
+                        <p class="revealed-caption" id="revealed-caption">
+                            “Saving this one forever. Some smiles are just meant to be kept safe.”
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================================================================
+             SECTION 11 — FINAL MESSAGE (WARM SUNSET FINALE)
+             =================================================================== -->
+        <section id="section-finale" class="experience-section finale-section full-screen">
+            <div class="sunset-glow-bg"></div>
+            <div class="section-container center finale-container">
+                <div class="finale-text-stream" id="finale-text-stream">
+                    <p class="finale-line line-1">Maybe we're far apart.</p>
+                    <p class="finale-line line-2">But I'm genuinely glad we crossed paths.</p>
+                    <p class="finale-line line-3">And wherever this friendship goes…</p>
+                    <p class="finale-line line-4">I hope there are many more random conversations, laughs, memories and good days ahead.</p>
+                    <p class="finale-line line-5">Until then…</p>
+                    <div class="finale-sunflower" id="finale-sunflower">🌻</div>
+                    <p class="finale-line line-6 standout">Take care of yourself, okay?</p>
+                    <span class="finale-signoff">— from someone a little too far away</span>
+                </div>
+
+                <div class="replay-action-wrapper">
+                    <button id="replay-btn" class="replay-btn" aria-label="Replay this little thing">
+                        <span>Replay this little thing ↻</span>
+                    </button>
+                </div>
+
+                <footer class="experience-footer">
+                    <p class="footer-note">Made with a little too much effort and probably too many animations. 😂</p>
+                    <p class="footer-sub">Pune 🌸 &bull; Dehradun 🌲</p>
+                </footer>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Modal for Fullscreen Photo Lightbox -->
+    <div id="photo-modal" class="photo-modal" aria-hidden="true">
+        <button class="modal-close-btn" id="modal-close-btn" aria-label="Close photo view">&times;</button>
+        <div class="modal-content">
+            <img id="modal-img" src="" alt="Enlarged memory">
+            <p id="modal-caption" class="modal-caption"></p>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="./script.js" defer></script>
+</body>
+</html>

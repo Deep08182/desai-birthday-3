@@ -1,0 +1,15 @@
+# Dependencies & local runtime
+node_modules/
+.DS_Store
+Thumbs.db
+Desktop.ini
+*.log
+
+# Explicitly ensure images folder and media files are NEVER ignored
+!images/
+!images/*
+!*.jpg
+!*.jpeg
+!*.png
+!*.webp
+!*.svg
